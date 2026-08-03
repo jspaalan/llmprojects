@@ -1,0 +1,93 @@
+{
+  "version": "0.1",
+  "title": "Highly available AWS web application",
+  "canvas": { "width": 1200, "height": 1500, "padding": 24, "background": "#ffffff" },
+  "grid": { "columns": 24, "rows": 30, "gapX": 8, "gapY": 8 },
+  "theme": {
+    "fontFamily": "Inter, Arial, sans-serif",
+    "line": "#65707c",
+    "aws": "#232f3e",
+    "green": "#2f8f2f",
+    "blue": "#1786b8",
+    "orange": "#c96b18",
+    "purple": "#6f42c1",
+    "red": "#d63232"
+  },
+  "layers": [
+    {
+      "id": "background",
+      "zIndex": 0,
+      "elements": [
+        { "id": "aws-cloud", "kind": "container", "label": "AWS Cloud", "pos": { "c": 1, "r": 2, "w": 24, "h": 28 }, "style": { "stroke": "#27313b", "strokeWidth": 2, "fill": "#ffffff", "titleFill": "#232f3e" } },
+        { "id": "vpc", "kind": "container", "label": "VPC", "pos": { "c": 1, "r": 8, "w": 24, "h": 22 }, "style": { "stroke": "#2f8f2f", "strokeWidth": 3, "fill": "#fbfffb", "titleFill": "#2f8f2f" } },
+        { "id": "az1", "kind": "container", "label": "Availability Zone 1", "pos": { "c": 7, "r": 8, "w": 8, "h": 22 }, "style": { "stroke": "#77a9d4", "dash": "8 7", "fill": "#fafdff", "titleFill": "#5596cc" } },
+        { "id": "az2", "kind": "container", "label": "Availability Zone 2", "pos": { "c": 17, "r": 8, "w": 8, "h": 22 }, "style": { "stroke": "#77a9d4", "dash": "8 7", "fill": "#fafdff", "titleFill": "#5596cc" } },
+        { "id": "public1", "kind": "container", "label": "Public subnet", "pos": { "c": 8, "r": 10, "w": 6, "h": 4 }, "style": { "stroke": "none", "fill": "#edf8e9", "titleFill": "#2f8f2f" } },
+        { "id": "public2", "kind": "container", "label": "Public subnet", "pos": { "c": 18, "r": 10, "w": 6, "h": 4 }, "style": { "stroke": "none", "fill": "#edf8e9", "titleFill": "#2f8f2f" } },
+        { "id": "web1", "kind": "container", "label": "Web subnet", "pos": { "c": 8, "r": 15, "w": 6, "h": 4 }, "style": { "stroke": "none", "fill": "#eaf5fb", "titleFill": "#1786b8" } },
+        { "id": "web2", "kind": "container", "label": "Web subnet", "pos": { "c": 18, "r": 15, "w": 6, "h": 4 }, "style": { "stroke": "none", "fill": "#eaf5fb", "titleFill": "#1786b8" } },
+        { "id": "app1", "kind": "container", "label": "App subnet", "pos": { "c": 8, "r": 20, "w": 6, "h": 4 }, "style": { "stroke": "none", "fill": "#eaf5fb", "titleFill": "#1786b8" } },
+        { "id": "app2", "kind": "container", "label": "App subnet", "pos": { "c": 18, "r": 20, "w": 6, "h": 4 }, "style": { "stroke": "none", "fill": "#eaf5fb", "titleFill": "#1786b8" } },
+        { "id": "db1", "kind": "container", "label": "DB subnet", "pos": { "c": 8, "r": 25, "w": 6, "h": 4 }, "style": { "stroke": "none", "fill": "#edf4f8", "titleFill": "#1786b8" } },
+        { "id": "db2", "kind": "container", "label": "DB subnet", "pos": { "c": 18, "r": 25, "w": 6, "h": 4 }, "style": { "stroke": "none", "fill": "#edf4f8", "titleFill": "#1786b8" } },
+        { "id": "web-asg", "kind": "outline", "label": "Auto Scaling group\nWeb tier", "pos": { "c": 8, "r": 15, "w": 16, "h": 4 }, "style": { "stroke": "#c96b18", "dash": "7 6", "fill": "none", "titleFill": "#c96b18" } },
+        { "id": "app-asg", "kind": "outline", "label": "Auto Scaling group\nApp tier", "pos": { "c": 8, "r": 20, "w": 16, "h": 4 }, "style": { "stroke": "#c96b18", "dash": "7 6", "fill": "none", "titleFill": "#c96b18" } },
+        { "id": "db-group", "kind": "outline", "label": "DB subnet group", "pos": { "c": 8, "r": 25, "w": 16, "h": 4 }, "style": { "stroke": "#65707c", "dash": "7 6", "fill": "none", "titleFill": "#65707c" } }
+      ]
+    },
+    {
+      "id": "services",
+      "zIndex": 10,
+      "elements": [
+        { "id": "client", "kind": "node", "label": "www.example.com\nmedia.example.com", "icon": "client", "pos": { "c": 8, "r": 1, "w": 8, "h": 2 }, "style": { "accent": "#374151" } },
+        { "id": "route53", "kind": "node", "label": "Amazon Route 53\nDNS service", "icon": "53", "pos": { "c": 11, "r": 3, "w": 4, "h": 3 }, "style": { "accent": "#6f42c1" } },
+        { "id": "waf-media", "kind": "node", "label": "AWS WAF\nWeb Application Firewall", "icon": "WAF", "pos": { "c": 6, "r": 4, "w": 4, "h": 3 }, "style": { "accent": "#d63232" } },
+        { "id": "cloudfront", "kind": "node", "label": "Amazon CloudFront\nCDN", "icon": "CDN", "pos": { "c": 10, "r": 6, "w": 4, "h": 3 }, "style": { "accent": "#6f42c1" } },
+        { "id": "waf-web", "kind": "node", "label": "AWS WAF\nWeb Application Firewall", "icon": "WAF", "pos": { "c": 17, "r": 4, "w": 4, "h": 3 }, "style": { "accent": "#d63232" } },
+        { "id": "shield", "kind": "node", "label": "AWS Shield\nDDoS protection", "icon": "SH", "pos": { "c": 22, "r": 3, "w": 3, "h": 3 }, "style": { "accent": "#d63232" } },
+        { "id": "s3", "kind": "node", "label": "Amazon S3\nStatic storage and backup", "icon": "S3", "pos": { "c": 2, "r": 7, "w": 4, "h": 3 }, "style": { "accent": "#2f8f2f" } },
+        { "id": "nat1", "kind": "node", "label": "NAT gateway", "icon": "NAT", "pos": { "c": 9, "r": 11, "w": 4, "h": 2 }, "style": { "accent": "#6f42c1" } },
+        { "id": "nat2", "kind": "node", "label": "NAT gateway", "icon": "NAT", "pos": { "c": 19, "r": 11, "w": 4, "h": 2 }, "style": { "accent": "#6f42c1" } },
+        { "id": "web-lb", "kind": "node", "label": "Elastic Load Balancing", "icon": "LB", "pos": { "c": 14, "r": 13, "w": 4, "h": 2 }, "style": { "accent": "#6f42c1" } },
+        { "id": "web-ec2-1", "kind": "node", "label": "EC2 Instances\nWeb servers", "icon": "EC2", "pos": { "c": 9, "r": 16, "w": 4, "h": 2 }, "style": { "accent": "#c96b18" } },
+        { "id": "web-ec2-2", "kind": "node", "label": "EC2 Instances\nWeb servers", "icon": "EC2", "pos": { "c": 19, "r": 16, "w": 4, "h": 2 }, "style": { "accent": "#c96b18" } },
+        { "id": "app-lb", "kind": "node", "label": "Elastic Load Balancing", "icon": "LB", "pos": { "c": 14, "r": 18, "w": 4, "h": 2 }, "style": { "accent": "#6f42c1" } },
+        { "id": "app-ec2-1", "kind": "node", "label": "EC2 Instances\nApp servers", "icon": "EC2", "pos": { "c": 9, "r": 21, "w": 4, "h": 2 }, "style": { "accent": "#c96b18" } },
+        { "id": "app-ec2-2", "kind": "node", "label": "EC2 Instances\nApp servers", "icon": "EC2", "pos": { "c": 19, "r": 21, "w": 4, "h": 2 }, "style": { "accent": "#c96b18" } },
+        { "id": "efs", "kind": "node", "label": "Amazon EFS\nShared storage", "icon": "EFS", "pos": { "c": 2, "r": 20, "w": 4, "h": 3 }, "style": { "accent": "#2f8f2f" } },
+        { "id": "cache", "kind": "node", "label": "Amazon ElastiCache\nCaching service", "icon": "CACHE", "pos": { "c": 2, "r": 25, "w": 4, "h": 3 }, "style": { "accent": "#405bd8" } },
+        { "id": "rds1", "kind": "node", "label": "Amazon RDS\nDatabase (primary)", "icon": "RDS", "pos": { "c": 9, "r": 26, "w": 4, "h": 2 }, "style": { "accent": "#405bd8" } },
+        { "id": "rds2", "kind": "node", "label": "Amazon RDS\nDatabase (secondary)", "icon": "RDS", "pos": { "c": 19, "r": 26, "w": 4, "h": 2 }, "style": { "accent": "#405bd8" } }
+      ],
+      "connections": [
+        { "from": { "id": "client", "port": "bottom" }, "to": { "id": "route53", "port": "top" } },
+        { "from": { "id": "route53", "port": "left" }, "to": { "id": "waf-media", "port": "top" }, "waypoints": [[10,4],[8,4]] },
+        { "from": { "id": "waf-media", "port": "bottom" }, "to": { "id": "cloudfront", "port": "top" }, "waypoints": [[8,6],[12,6]] },
+        { "from": { "id": "route53", "port": "right" }, "to": { "id": "waf-web", "port": "top" }, "waypoints": [[17,4],[19,4]] },
+        { "from": { "id": "cloudfront", "port": "bottom" }, "to": { "id": "web-lb", "port": "top" }, "waypoints": [[12,13],[16,13]] },
+        { "from": { "id": "waf-web", "port": "bottom" }, "to": { "id": "web-lb", "port": "top" }, "waypoints": [[19,13],[16,13]] },
+        { "from": { "id": "web-lb", "port": "bottom" }, "to": { "id": "web-ec2-1", "port": "top" }, "waypoints": [[16,15],[11,15]] },
+        { "from": { "id": "web-lb", "port": "bottom" }, "to": { "id": "web-ec2-2", "port": "top" }, "waypoints": [[16,15],[21,15]] },
+        { "from": { "id": "web-ec2-1", "port": "bottom" }, "to": { "id": "app-lb", "port": "left" }, "waypoints": [[11,19],[14,19]] },
+        { "from": { "id": "web-ec2-2", "port": "bottom" }, "to": { "id": "app-lb", "port": "right" }, "waypoints": [[21,19],[18,19]] },
+        { "from": { "id": "app-lb", "port": "bottom" }, "to": { "id": "app-ec2-1", "port": "top" }, "waypoints": [[16,20],[11,20]] },
+        { "from": { "id": "app-lb", "port": "bottom" }, "to": { "id": "app-ec2-2", "port": "top" }, "waypoints": [[16,20],[21,20]] },
+        { "from": { "id": "app-ec2-1", "port": "bottom" }, "to": { "id": "rds1", "port": "top" } },
+        { "from": { "id": "app-ec2-2", "port": "bottom" }, "to": { "id": "rds2", "port": "top" } },
+        { "from": { "id": "rds1", "port": "right" }, "to": { "id": "rds2", "port": "left" }, "style": { "arrow": "both" } },
+        { "from": { "id": "efs", "port": "right" }, "to": { "id": "app-ec2-1", "port": "left" } },
+        { "from": { "id": "cache", "port": "right" }, "to": { "id": "app-ec2-1", "port": "left" }, "waypoints": [[7,26],[7,22]] },
+        { "from": { "id": "s3", "port": "bottom" }, "to": { "id": "web-ec2-1", "port": "left" }, "waypoints": [[4,17],[9,17]] }
+      ]
+    },
+    {
+      "id": "annotations",
+      "zIndex": 30,
+      "elements": [
+        { "id": "badge1", "kind": "badge", "text": "1", "anchor": { "id": "route53", "corner": "top-right", "dx": -4, "dy": 4 } },
+        { "id": "badge2", "kind": "badge", "text": "2", "anchor": { "id": "web-lb", "corner": "top-right", "dx": -4, "dy": 4 } },
+        { "id": "badge3", "kind": "badge", "text": "3", "anchor": { "id": "rds1", "corner": "top-right", "dx": -4, "dy": 4 } }
+      ]
+    }
+  ]
+}
