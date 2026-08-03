@@ -1,18 +1,20 @@
 <!doctype html>
-<html lang="fi">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>JS-diagrammi</title>
-  <style>
-    body { font-family: sans-serif; max-width: 800px; margin: 40px auto; padding: 0 16px; }
-    canvas { width: 100%; height: auto; border: 1px solid #ccc; }
-  </style>
+  <title>Security toolkit architecture</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>Kuukausittaiset projektit</h1>
-  <p>Diagrammi piirretään JavaScriptillä Canvas API:n avulla.</p>
-  <canvas id="chart" width="720" height="420"></canvas>
-  <script src="script.js"></script>
+  <header>
+    <div><span class="eyebrow">GH SECURITY TOOLKIT</span><h1>Architecture diagram</h1></div>
+    <label class="grid-control"><input id="grid-toggle" type="checkbox"> Show grid</label>
+  </header>
+  <main>
+    <div id="error" class="error" role="alert" hidden></div>
+    <div id="diagram" class="diagram" aria-live="polite"><p class="loading">Loading diagram…</p></div>
+  </main>
+  <script type="module" src="app.js"></script>
 </body>
 </html>
